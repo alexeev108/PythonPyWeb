@@ -13,7 +13,7 @@ class TrainView(View):
         self.answer4 = Author.objects.filter(gender='ж').count()
         self.answer5 = round(Author.objects.filter(status_rule=True).count() * 100 / Author.objects.count(), 2)
         self.answer6 = Author.objects.filter(authorprofile__stage__range=(1, 5))
-        self.answer7 = Author.objects.filter().order_by('-age')[0]
+        self.answer7 = Author.objects.filter().order_by('-age').first()
         self.answer8 = Author.objects.filter().count() - Author.objects.filter(phone_number=None).count()
         self.answer9 = Author.objects.filter(age__lt=25)
         self.answer10 = Author.objects.annotate(count=Count('entries')).values('username',
